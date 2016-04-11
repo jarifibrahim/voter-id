@@ -1,0 +1,41 @@
+<html>
+<head>
+  <title>Register for a voter ID</title>
+  <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+<script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+</head>
+
+<body>
+  <div class="container" style="width: 30%; margin-top: 200px;">
+
+              {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                  {% for category, message in messages %}
+                    <h3><span class= {{ category }}>{{ message }}</span></h3>
+                  {% endfor %}
+                {% endif %}
+              {% endwith %}
+    <a class="text-primary" href='{{url_for(".result")}}'>Click here to view results</a>
+    <form action="{{url_for('.index')}}" method="POST">
+      <div class="form-group">
+        <label for="name">Full Name</label>
+        <input type="text" class="form-control" id="name" placeholder="Name" name='name'>
+      </div>
+      <div class="form-group">
+        <label for="Birthdate">Birthdate</label>
+        <input type="date" class="form-control" id="birthdate" placeholder="Birth Date" name='bday'>
+      </div>
+      <div class="form-group">
+        <label for="name">Aadhar Card Number</label>
+        <input type="text" class="form-control" id="aadhar" placeholder="Aadhar Card Number" name='aadhar'>
+      </div>
+      <div class="form-group">
+        <input type="submit" class='form-control btn btn-primary' value='Register'/>
+      </div>
+    </form>
+  </div>
+</body>
+</html>
